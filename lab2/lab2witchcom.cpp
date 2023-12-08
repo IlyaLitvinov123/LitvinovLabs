@@ -1,65 +1,62 @@
 #include <stdlib.h>
 #include <iostream>
 
-struct TwoInts
-{
+struct TwoInts {
     int a;
     int b;
 };
 
-struct StructWithArray
-{
+struct StructWithArray {
     int arr[4];
     int* someNumber;
 };
 
-int main()
-{
-    // Создание структуры TwoInts и инициализация значений a и b
+int main() {
+    // Sozdaem strukturu TwoInts i initsializiruem znacheniya a i b
     TwoInts i2 = { };
     i2.a = 5;
     i2.b = 7;
 
-    // Вывод значений a и b на экран
+    // Vivod znacheniy a i b na ekran
     std::cout << i2.a << std::endl;
     std::cout << i2.b << std::endl;
 
-    // Создание двух переменных типа StructWithArray и инициализация их массивов arr
+    // Sozdaem dva peremennyh tipa StructWithArray i initsializiruem ih massivami arr
     StructWithArray s = { };
     s.arr[0] = 10;
 
     StructWithArray s1 = { };
     s1.arr[0] = 15;
 
-    // Использование указателя для работы с массивом arr в структуре s через sPointer
+    // Ispol'zovanie ukazatelya dlya raboty s massivom arr v strukture s cherez sPointer
     StructWithArray* sPointer = &s;
     sPointer->arr[0] = 20;
 
-    // Вывод и изменение значений элементов массива arr через s и sPointer
+    // Vivod i izmenenie znacheniy elementov massiva arr cherez s i sPointer
     std::cout << s.arr[0] << std::endl;
     s.arr[0] = 25;
     std::cout << s.arr[0] << std::endl;
     sPointer->arr[0] = 30;
     std::cout << s.arr[0] << std::endl;
 
-    // Изменение значения массива arr в s1 через указатель sPointer
+    // Izmenenie znacheniya massiva arr v s1 cherez ukazatel' sPointer
     sPointer = &s1;
     sPointer->arr[0] = 35;
     std::cout << s.arr[0] << std::endl;
     std::cout << s1.arr[0] << std::endl;
 
-    // Инициализация массива структур и работы с указателями
+    // Initsializatsiya massiva struktur i rabota s ukazatelyami
     StructWithArray structArray[2] = { };
     structArray[0].arr[3] = 77;
     structArray[1].someNumber = &structArray[0].arr[3];
 
-    // Использование указателей для изменения значений элементов массива arr
+    // Ispol'zovanie ukazateley dlya izmeneniya znacheniy elementov massiva arr
     sPointer = &s;
     int* pointer = &sPointer->arr[3];
     s.arr[3] = 72;
     std::cout << *pointer;
 
-    // Заполнение памяти переменной memory нулями с помощью функции memset()
+    // Zapolnenie pamyati peremennoy memory nulyami s pomoshch'yu funkcii memset()
     StructWithArray memory;
     memset(&memory, 0, sizeof(StructWithArray));
     return 0;
